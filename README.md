@@ -1,1 +1,3 @@
-# knex
+- Running docker-compose up -d
+- Access: http://localhost:8080/
+- Login with username = root and password = rootpassword
