@@ -1,14 +1,5 @@
-const knex = require('../config/database')
+const knex = require("../config/database");
+const execute = require("../utils");
+const select = knex("users as u").select("email as uemail", "id as uid");
 
-
-const select = knex('users as u').select('email as uemail', 'id as uid')
-
-select.then(data => {
-  for(const user of data) {
-    console.log(user)
-  }
-  console.log(select.toString())
-}).catch(e => console.log(e.message))
-.finally(() => {
-  knex.destroy()
-})
+execute(select);

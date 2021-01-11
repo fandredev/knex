@@ -8,19 +8,13 @@
  * Offset = 'Paginação'
  */
 
-const knex = require('../config/database')
+const knex = require("../config/database");
+const execute = require("../utils");
 
-const query = knex('users')
-  .select('id', 'first_name', 'email as uemail')
-  .whereBetween('id', [1,150])
-  .orderBy('first_name', 'asc')
+const query = knex("users")
+  .select("id", "first_name", "email as uemail")
+  .whereBetween("id", [1, 150])
+  .orderBy("first_name", "asc")
   .limit(5)
-  .offset(10)
-
-
-console.log(query.toString())
-
-query.then(response => {
-  if(response) console.log(response)
-}).catch(err => console.log(err))
-.finally(() => knex.destroy())
+  .offset(10);
+execute(query);

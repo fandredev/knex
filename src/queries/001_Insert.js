@@ -1,4 +1,5 @@
-const knex = require('../config/database')
+const knex = require("../config/database");
+const execute = require("../utils");
 
 // 1 insert só
 /*
@@ -12,25 +13,23 @@ const knex = require('../config/database')
 */
 
 // Múltiplos inserts
-const data = [{
-  first_name: 'Pietra',
-  last_name: 'B',
-  email: '2@gmail.com',
-  password_hash: '2_hash',
-  salary: 581.12
-}, {
-  first_name: 'Felipe',
-  last_name: 'C',
-  email: '3@gmail.com',
-  password_hash: '3_hash',
-  salary: 681.12
-}]
+const data = [
+  {
+    first_name: "Pietra",
+    last_name: "B",
+    email: "2@gmail.com",
+    password_hash: "2_hash",
+    salary: 581.12,
+  },
+  {
+    first_name: "Felipe",
+    last_name: "C",
+    email: "3@gmail.com",
+    password_hash: "3_hash",
+    salary: 681.12,
+  },
+];
 
-const insert = knex('users').insert(data)
-//console.log(insert.toSQL().toNative())
-//console.log(insert.toString())
+const insert = knex("users").insert(data);
 
-insert
-  .then(data => console.log(data))
-  .catch(e => console.log('Error: ', e.message))
-  .finally(() => knex.destroy())
+execute(insert);

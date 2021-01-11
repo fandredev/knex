@@ -1,3 +1,3 @@
-- Running docker-compose up -d
+- Running docker-compose up -d or running bash docker.sh
 - Access: http://localhost:8080/
 - Login with username = root and password = rootpassword

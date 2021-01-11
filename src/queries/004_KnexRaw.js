@@ -1,6 +1,6 @@
-const knex = require('../config/database')
+const execute = require("../utils");
 
-const query=`INSERT INTO users (
+const query = `INSERT INTO users (
   first_name,
   last_name,
   email,
@@ -708,10 +708,5 @@ VALUES (
   "2021-03-30 01:48:13"
 );
 
-`
-
-knex.raw(query).then(data => {
-  console.log(data)
-})
-.catch(e => console.log(e.message))
-.finally(() => knex.destroy())
+`;
+execute(query);

@@ -6,18 +6,10 @@
  */
 
 const knex = require("../config/database");
+const execute = require("../utils");
+const query = knex("users")
+  .select("id", "first_name", "email as uemail")
+  .whereBetween("id", [100, 150])
+  .orderBy("first_name", "desc");
 
-
-const query = knex('users')
-.select('id', 'first_name', 'email as uemail')
-.whereBetween('id', [100, 150])
-.orderBy('first_name', 'desc')
-
-
-console.log(query.toString())
-
-query.then(response => {
-  if(response) console.log(response)
-}).catch(err => console.log(err))
-.finally(() => knex.destroy())
-
+execute(query);
